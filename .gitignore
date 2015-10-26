@@ -1,1 +1,6 @@
 .tmp
+*.swp
+*.un~
+.idea
+.DS_Store
+
