@@ -4,4 +4,7 @@
 .idea
 .gitignore
 .scss-lint.yml
+.un~
+.swp
+.tmp
 gulpfile.js
