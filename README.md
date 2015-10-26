@@ -1,19 +1,23 @@
-**NOT READY FOR PUBLIC CONSUMPTION.** A large portion of the readme below is inapplicable information
-taken from an upstream source!
-
 React Tooltipper
 ===
 
+<!---
 <a href="https://www.npmjs.com/package/react-tooltipper" target="_blank">![](https://badge.fury.io/js/react-tooltipper.svg)</a> <a href="https://travis-ci.org/jmrog/react-tooltipper" target="_blank">![](https://travis-ci.org/jmrog/react-tooltipper.svg)</a>
 <a href="https://codeclimate.com/github/jmrog/react-tooltipper">![](https://codeclimate.com/github/jmrog/react-tooltipper/badges/gpa.svg)</a>
 
 <a href="http://jmrog.github.io/react-tooltipper/" target="_blank">![](http://jmrog.github.io/react-tooltipper/media/example.png)</a>
 
 View the demo <a href="http://jmrog.github.io/react-tooltipper/" target="_blank">here</a>.
+-->
+
+Create and trigger responsive beacons and tooltips for your ReactJS apps using this React mixin. It can
+be used to show either clickable beacons that will open tooltips or simply the open tooltips themselves.
+All beacons and tooltips are dynamically positioned so as to appear attached to their target elements,
+and will reposition themselves on resizing, etc.
 
 ## Install
 
-```javascript
+```
 npm install --save react-tooltipper
 ```
 
@@ -28,10 +32,11 @@ var App = React.createClass({
 });
 ```
 
-**This mixin changes state often so you should use `React.addons.PureRenderMixin` in your components as well.**
+**This mixin can change state often, so you might want to use `React.addons.PureRenderMixin` in your
+components as well.**
 
 #### Styles
- 
+
 If your are using **SCSS**:
 
 ```scss
@@ -48,86 +53,67 @@ Or include this directly in your html:
 
 ## Getting Started
 
-Add steps to your tour after your component is mounted.
+Set the options for your tooltips when the controller view component mounts.
+
+```javascript
+this.tooltipperSetOptions({
+    scrollOffset: 90,
+    showOverlay: false,
+    scrollToSteps: true,
+    completeCallback: () => {},
+    type: 'guided'
+});
+```
+
+Define your tooltips whenever you'd like (prior to triggering):
+
+```javascript
+const tooltips = [{
+    title: 'Tooltip Title',
+    text: 'Some text for the tooltip.',
+    selector: '.some-selector',
+    position: 'bottom'
+}, . . . ];
+```
+When you'd like, add your tooltip and trigger it:
+
+```javascript
+this.tooltipperSetTooltipData(tooltips[0]); // or whatever element you'd like
+this.tooltipperTrigger();
+```
 
 ```javascript
 	componentDidMount: function () {
-		this.tooltipperAddSteps([{...}])]
+		this.tooltipperSetTooltipData([{...}])]
 	}
-```
-
-Start the tour with:
-
-```javascript
-this.tooltipperStart()
 ```
 
 ## API
 
 ### this.tooltipperSetOptions(options)
 
-Change the initial options during `componentWillMount`. All optional
+Change the initial options during `componentWillMount`. All optional.
 
 - `options` {object} - One or more of the options below.
 
-**keyboardNavigation** {bool}: Toggle keyboard navigation (esc, space bar, return). Defaults to `true`
-
-**locale** {object}: The strings used in the tooltip. Defaults to `{ back: 'Back', close: 'Close', last: 'Last', next: 'Next', skip: 'Skip' }`
-
 **scrollOffset** {number}: The scrollTop offset used in `scrollToSteps`. Defaults to `20`
 
-**scrollToSteps** {bool}: Scroll the page to the next step if needed. Defaults to `true`
+**scrollToTooltip** {bool}: Scroll the page to the next tooltip if needed. Defaults to `true`
 
-**showBackButton** {bool}: Display a back button. Defaults to `true`
-
-**showOverlay** {bool}: Display an overlay with holes above your steps. Defaults to `true`
-
-**showSkipButton** {bool}: Display a link to skip the tour. It will trigger the `completeCallback` if it was defined. Defaults to `false`
-
-**showStepsProgress** {bool}: Display the tour progress in the next button *e.g. 2/5*  in `guided` tours. Defaults to `false`
+**showOverlay** {bool}: Display an overlay with holes above your tooltips. Defaults to `true`
 
 **tooltipOffset** {number}: The tooltip offset from the target. Defaults to `30`
 
-**type** {string}: The type of your presentation. It can be `guided` (played sequencially with the Next button) or `single`. Defaults to `guided`
+**completeCallback** {function}: It will be called after a closes the tooltip. Defaults to `undefined`
 
-**completeCallback** {function}: It will be called after an user has completed all the steps or skipped the tour completely and passes the steps `{array}` and if the tour was skipped `{boolean}`. Defaults to `undefined`
+### this.tooltipperSetTooltipData(tooltipData)
 
-**stepCallback** {function}: It will be called after each step and passes the completed step `{object}`. Defaults to `undefined`
+Set up a tooltip to be shown on the next call to `this.tooltipperTrigger`.
 
-Example:
-
-```javascript
-componentWillMount: function () {
-	this.tooltipperSetOptions({
-		locale: {
-			back: 'Voltar',
-			close: 'Fechar',
-			last: 'Último',
-			next: 'Próximo',
-			skip: 'Pular'
-		},
-		showSkipButton: true,
-		tooltipOffset: 10,
-		...
-		stepCallback: function(step) {
-			console.log(step);
-		},
-		completeCallback: function(steps) {
-			console.log(steps);
-		}
-	});
-}
-```
-
-### this.tooltipperAddSteps(steps, [start])
-
-Add steps to your tour. You can call this method multiple times even after the tour has started.
-
-- `steps` {object|array} - Steps to add to the tour
-- `start` {boolean} - Starts the tour right away (optional)
+- `tooltipData` {object} - Data describing the tooltip, as in the example below.
 
 ```javascript
-this.tooltipperAddSteps([
+this.tooltipperSetTooltipData([
 	{
 		title: "", //optional
 		text: "...",
@@ -138,46 +124,11 @@ this.tooltipperAddSteps([
 ]);
 ```
 
-### this.tooltipperReplaceSteps(steps, [start])
+### this.tooltipperTrigger(autorun)
 
-Add steps to your tour. You can call this method multiple times even after the tour has started.
+Call this method to trigger the tooltip defined with `this.tooltipperSetTooltipData`.
 
-- `steps` {object|array} - Steps to replace
-- `restart` {boolean} - Starts the new tour right away. Defaults to `true`
-
-```javascript
-this.tooltipperReplaceSteps([
-	{
-		title: "", //optional
-		text: "...",
-		selector: "...",
-		position: "..."
-	},
-	...
-], true);
-```
-
-### this.tooltipperStart(autorun)
-
-Call this method to start the tour if it wasn't already started with `this.tooltipperAddSteps()`
-
-- `autorun` {boolean} - Starts the tour with the first tooltip opened.
-
-### this.tooltipperGetProgress()
-Retrieve the current progress of your tour. The object returned looks like this:
-
-```javascript
-{
-	index: 2,
-	percentageComplete: 50,
-	step: {
-		title: "...",
-		text: "...",
-		selector: "...",
-		position: "..."
-	}
-}}
-```
+- `autorun` {boolean} - Optional; displays the tooltip in an already opened state (no beacon to click)
 
 ## Step Syntax
 There are 4 usable options but you can pass extra parameters.
