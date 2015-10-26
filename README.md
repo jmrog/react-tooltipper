@@ -1,3 +1,6 @@
+**NOT READY FOR PUBLIC CONSUMPTION.** The readme below is inapplicable information from an upstream
+source!
+
 React Joyride
 ===
 
