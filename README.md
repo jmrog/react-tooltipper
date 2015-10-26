@@ -59,7 +59,7 @@ Set the options for your tooltips when the controller view component mounts.
 this.tooltipperSetOptions({
     scrollOffset: 90,
     showOverlay: false,
-    scrollToSteps: true,
+    scrollToTooltip: true,
     completeCallback: () => {},
     type: 'guided'
 });
@@ -96,7 +96,7 @@ Change the initial options during `componentWillMount`. All optional.
 
 - `options` {object} - One or more of the options below.
 
-**scrollOffset** {number}: The scrollTop offset used in `scrollToSteps`. Defaults to `20`
+**scrollOffset** {number}: The scrollTop offset used in `scrollToTooltip`. Defaults to `20`
 
 **scrollToTooltip** {bool}: Scroll the page to the next tooltip if needed. Defaults to `true`
 
@@ -130,24 +130,24 @@ Call this method to trigger the tooltip defined with `this.tooltipperSetTooltipD
 
 - `autorun` {boolean} - Optional; displays the tooltip in an already opened state (no beacon to click)
 
-## Step Syntax
+## tooltipData Syntax
 There are 4 usable options but you can pass extra parameters.
 
 - `title`: The title of the tooltip (optional)
 - `text`: The tooltip's body (required)
-- `selector`: The target DOM selector of your step (required)
+- `selector`: The target DOM selector to which your tooltip will "attach" (required)
 - `position`: Relative position of you beacon and tooltip. It can be one of these: `right`, `left`, `top`, `top-left`, `top-right`, `bottom`, `bottom-left`, `bottom-right` and `center`. This defaults to `top`.
 
 Example:
 
 ```javascript
 {
-    title: 'First Step',
+    title: 'First Tooltip',
     text: 'Start using the tooltipper',
-    selector: '.first-step',
+    selector: '.first-tooltip',
     position: 'bottom-left',
     ...
-    name: 'my-first-step',
+    name: 'my-first-tooltip',
     parent: 'MyComponentName'
 }
 ```
