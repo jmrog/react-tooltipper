@@ -1,29 +1,29 @@
-**NOT READY FOR PUBLIC CONSUMPTION.** The readme below is inapplicable information from an upstream
-source!
+**NOT READY FOR PUBLIC CONSUMPTION.** A large portion of the readme below is inapplicable information
+taken from an upstream source!
 
-React Joyride
+React Tooltipper
 ===
 
-<a href="https://www.npmjs.com/package/react-joyride" target="_blank">![](https://badge.fury.io/js/react-joyride.svg)</a> <a href="https://travis-ci.org/gilbarbara/react-joyride" target="_blank">![](https://travis-ci.org/gilbarbara/react-joyride.svg)</a>
-<a href="https://codeclimate.com/github/gilbarbara/react-joyride">![](https://codeclimate.com/github/gilbarbara/react-joyride/badges/gpa.svg)</a>
+<a href="https://www.npmjs.com/package/react-tooltipper" target="_blank">![](https://badge.fury.io/js/react-tooltipper.svg)</a> <a href="https://travis-ci.org/jmrog/react-tooltipper" target="_blank">![](https://travis-ci.org/jmrog/react-tooltipper.svg)</a>
+<a href="https://codeclimate.com/github/jmrog/react-tooltipper">![](https://codeclimate.com/github/jmrog/react-tooltipper/badges/gpa.svg)</a>
 
-<a href="http://gilbarbara.github.io/react-joyride/" target="_blank">![](http://gilbarbara.github.io/react-joyride/media/example.png)</a>
+<a href="http://jmrog.github.io/react-tooltipper/" target="_blank">![](http://jmrog.github.io/react-tooltipper/media/example.png)</a>
 
-View the demo <a href="http://gilbarbara.github.io/react-joyride/" target="_blank">here</a>.
+View the demo <a href="http://jmrog.github.io/react-tooltipper/" target="_blank">here</a>.
 
 ## Install
 
 ```javascript
-npm install --save react-joyride
+npm install --save react-tooltipper
 ```
 
 
 ```javascript
 var react = require('react/addons');
-var joyride = require('react-joyride').Mixin;
+var tooltipper = require('react-tooltipper').Mixin;
 
 var App = React.createClass({
-  mixins: [React.addons.PureRenderMixin, joyride],
+  mixins: [React.addons.PureRenderMixin, tooltipper],
   ...
 });
 ```
@@ -35,14 +35,14 @@ var App = React.createClass({
 If your are using **SCSS**:
 
 ```scss
-@include 'react-joyride/lib/styles/react-joyride'
+@include 'react-tooltipper/lib/styles/react-tooltipper'
 
 ```
 
 Or include this directly in your html:
 
 ```html
-<link rel="stylesheet" href="react-joyride/lib/styles/react-joyride.css" type="text/css">
+<link rel="stylesheet" href="react-tooltipper/lib/styles/react-tooltipper.css" type="text/css">
 ```
 
 
@@ -52,19 +52,19 @@ Add steps to your tour after your component is mounted.
 
 ```javascript
 	componentDidMount: function () {
-		this.joyrideAddSteps([{...}])]
+		this.tooltipperAddSteps([{...}])]
 	}
 ```
 
 Start the tour with:
 
 ```javascript
-this.joyrideStart()
+this.tooltipperStart()
 ```
 
 ## API
 
-### this.joyrideSetOptions(options)
+### this.tooltipperSetOptions(options)
 
 Change the initial options during `componentWillMount`. All optional
 
@@ -98,7 +98,7 @@ Example:
 
 ```javascript
 componentWillMount: function () {
-	this.joyrideSetOptions({
+	this.tooltipperSetOptions({
 		locale: {
 			back: 'Voltar',
 			close: 'Fechar',
@@ -119,7 +119,7 @@ componentWillMount: function () {
 }
 ```
 
-### this.joyrideAddSteps(steps, [start])
+### this.tooltipperAddSteps(steps, [start])
 
 Add steps to your tour. You can call this method multiple times even after the tour has started.
 
@@ -127,7 +127,7 @@ Add steps to your tour. You can call this method multiple times even after the t
 - `start` {boolean} - Starts the tour right away (optional)
 
 ```javascript
-this.joyrideAddSteps([
+this.tooltipperAddSteps([
 	{
 		title: "", //optional
 		text: "...",
@@ -138,7 +138,7 @@ this.joyrideAddSteps([
 ]);
 ```
 
-### this.joyrideReplaceSteps(steps, [start])
+### this.tooltipperReplaceSteps(steps, [start])
 
 Add steps to your tour. You can call this method multiple times even after the tour has started.
 
@@ -146,7 +146,7 @@ Add steps to your tour. You can call this method multiple times even after the t
 - `restart` {boolean} - Starts the new tour right away. Defaults to `true`
 
 ```javascript
-this.joyrideReplaceSteps([
+this.tooltipperReplaceSteps([
 	{
 		title: "", //optional
 		text: "...",
@@ -157,13 +157,13 @@ this.joyrideReplaceSteps([
 ], true);
 ```
 
-### this.joyrideStart(autorun)
+### this.tooltipperStart(autorun)
 
-Call this method to start the tour if it wasn't already started with `this.joyrideAddSteps()`
+Call this method to start the tour if it wasn't already started with `this.tooltipperAddSteps()`
 
 - `autorun` {boolean} - Starts the tour with the first tooltip opened.
 
-### this.joyrideGetProgress()
+### this.tooltipperGetProgress()
 Retrieve the current progress of your tour. The object returned looks like this:
 
 ```javascript
@@ -192,7 +192,7 @@ Example:
 ```javascript
 {
     title: 'First Step',
-    text: 'Start using the joyride',
+    text: 'Start using the tooltipper',
     selector: '.first-step',
     position: 'bottom-left',
     ...
@@ -205,38 +205,39 @@ Example:
 
 #### Basic
 
-- `$joyride-color`: The base color. Defaults to `#f04`
-- `$joyride-zindex`: Defaults to `1500`
-- `$joyride-overlay-color`: Defaults to `rgba(#000, 0.5)`
-- `$joyride-beacon-color`: Defaults to `$joyride-color`
-- `$joyride-beacon-size`: Defaults to `36px`
-- `$joyride-hole-border-radius`: Defaults to `4px`
-- `$joyride-hole-shadow`: Defaults to `0 0 15px rgba(#000, 0.5)`
+- `$tooltipper-color`: The base color. Defaults to `#f04`
+- `$tooltipper-zindex`: Defaults to `1500`
+- `$tooltipper-overlay-color`: Defaults to `rgba(#000, 0.5)`
+- `$tooltipper-beacon-color`: Defaults to `$tooltipper-color`
+- `$tooltipper-beacon-size`: Defaults to `36px`
+- `$tooltipper-hole-border-radius`: Defaults to `4px`
+- `$tooltipper-hole-shadow`: Defaults to `0 0 15px rgba(#000, 0.5)`
 
 #### Tooltip
 
-- `$joyride-tooltip-arrow-size`: You must use even numbers to avoid half-pixel inconsistencies. Defaults to `28px`
-- `$joyride-tooltip-bg-color`: Defaults to `#fff`
-- `$joyride-tooltip-border-radius`: Defaults to `8px`
-- `$joyride-tooltip-color`: The header and text color. Defaults to `#555`
-- `$joyride-tooltip-font-size`: Defaults to `16px`
-- `$joyride-tooltip-padding`: Defaults to `20px`
-- `$joyride-tooltip-shadow`: Defaults to `drop-shadow(2px 4px 4px rgba(#000, 0.5))`
-- `$joyride-tooltip-width`: Sass list of Mobile / Tablet / Desktop sizes. Defaults to `(290px, 360px, 450px)`
-- `$joyride-header-color`: Defaults to `$joyride-tooltip-header-color`
-- `$joyride-header-font-size`: Defaults to `20px`
-- `$joyride-header-border-color`: Defaults to `$joyride-color`
-- `$joyride-header-border-width`: Defaults to `1px`
-- `$joyride-button-bg-color`: Defaults to `$joyride-color`
-- `$joyride-button-color`: Defaults to `#fff`
-- `$joyride-button-border-radius`: Defaults to `4px`
-- `$joyride-back-button-color`: Defaults to `$joyride-color`
-- `$joyride-skip-button-color`: Defaults to `#ccc`
+- `$tooltipper-tooltip-arrow-size`: You must use even numbers to avoid half-pixel inconsistencies. Defaults to `28px`
+- `$tooltipper-tooltip-bg-color`: Defaults to `#fff`
+- `$tooltipper-tooltip-border-radius`: Defaults to `8px`
+- `$tooltipper-tooltip-color`: The header and text color. Defaults to `#555`
+- `$tooltipper-tooltip-font-size`: Defaults to `16px`
+- `$tooltipper-tooltip-padding`: Defaults to `20px`
+- `$tooltipper-tooltip-shadow`: Defaults to `drop-shadow(2px 4px 4px rgba(#000, 0.5))`
+- `$tooltipper-tooltip-width`: Sass list of Mobile / Tablet / Desktop sizes. Defaults to `(290px, 360px, 450px)`
+- `$tooltipper-header-color`: Defaults to `$tooltipper-tooltip-header-color`
+- `$tooltipper-header-font-size`: Defaults to `20px`
+- `$tooltipper-header-border-color`: Defaults to `$tooltipper-color`
+- `$tooltipper-header-border-width`: Defaults to `1px`
+- `$tooltipper-button-bg-color`: Defaults to `$tooltipper-color`
+- `$tooltipper-button-color`: Defaults to `#fff`
+- `$tooltipper-button-border-radius`: Defaults to `4px`
+- `$tooltipper-back-button-color`: Defaults to `$tooltipper-color`
+- `$tooltipper-skip-button-color`: Defaults to `#ccc`
 
 ## License
 
-Copyright © 2015 Gil Barbara - [MIT License](LICENSE)
+Copyright © 2015 Jason Rogers - [MIT License](LICENSE)
 
 ---
 
-Inspired by [react-tour-guide](https://github.com/jakemmarsh/react-tour-guide) and [jquery joyride tour](http://zurb.com/playground/jquery-joyride-feature-tour-plugin)
+Forked from [react-joyride](https://github.com/gilbarbara/react-joyride)
+
