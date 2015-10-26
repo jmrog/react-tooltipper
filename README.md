@@ -1,10 +1,9 @@
 React Tooltipper
 ===
 
-<!---
 <a href="https://www.npmjs.com/package/react-tooltipper" target="_blank">![](https://badge.fury.io/js/react-tooltipper.svg)</a> <a href="https://travis-ci.org/jmrog/react-tooltipper" target="_blank">![](https://travis-ci.org/jmrog/react-tooltipper.svg)</a>
-<a href="https://codeclimate.com/github/jmrog/react-tooltipper">![](https://codeclimate.com/github/jmrog/react-tooltipper/badges/gpa.svg)</a>
 
+<!---
 <a href="http://jmrog.github.io/react-tooltipper/" target="_blank">![](http://jmrog.github.io/react-tooltipper/media/example.png)</a>
 
 View the demo <a href="http://jmrog.github.io/react-tooltipper/" target="_blank">here</a>.
