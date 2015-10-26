@@ -60,11 +60,11 @@ Set the options for your tooltips when the controller view component mounts.
 
 ```javascript
 this.tooltipperSetOptions({
+    completeCallback: () => {},
+    doDebounceResize: true,
     scrollOffset: 90,
     showOverlay: false,
-    scrollToTooltip: true,
-    completeCallback: () => {},
-    type: 'guided'
+    scrollToTooltip: true
 });
 ```
 
@@ -99,15 +99,17 @@ Change the initial options during `componentWillMount`. All optional.
 
 - `options` {object} - One or more of the options below.
 
+**completeCallback** {function}: It will be called after a closes the tooltip. Defaults to `undefined`
+
+**doDebounceResize** {boolean}: Do or do not debounce the resize event listenre. Defaults to `true`
+
 **scrollOffset** {number}: The scrollTop offset used in `scrollToTooltip`. Defaults to `20`
 
-**scrollToTooltip** {bool}: Scroll the page to the next tooltip if needed. Defaults to `true`
+**scrollToTooltip** {boolean}: Scroll the page to the next tooltip if needed. Defaults to `true`
 
-**showOverlay** {bool}: Display an overlay with holes above your tooltips. Defaults to `true`
+**showOverlay** {boolean}: Display an overlay with holes above your tooltips. Defaults to `true`
 
 **tooltipOffset** {number}: The tooltip offset from the target. Defaults to `30`
-
-**completeCallback** {function}: It will be called after a closes the tooltip. Defaults to `undefined`
 
 ### this.tooltipperSetTooltipData(tooltipData)
 
