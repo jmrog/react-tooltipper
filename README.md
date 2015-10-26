@@ -10,6 +10,9 @@ React Tooltipper
 View the demo <a href="http://jmrog.github.io/react-tooltipper/" target="_blank">here</a>.
 -->
 
+**NOTE:** This is a fork of the react-joyride project created mostly for utilitarian reasons, and it is
+in the very early stages of development. Things may break.
+
 Create and trigger responsive beacons and tooltips for your ReactJS apps using this React mixin. It can
 be used to show either clickable beacons that will open tooltips or simply the open tooltips themselves.
 All beacons and tooltips are dynamically positioned so as to appear attached to their target elements,
@@ -78,7 +81,7 @@ const tooltips = [{
 When you'd like, add your tooltip and trigger it:
 
 ```javascript
-this.tooltipperSetTooltipData(tooltips[0]); // or whatever element you'd like
+this.tooltipperSetTooltipData(tooltips[0]); // or whatever tooltip element you'd like
 this.tooltipperTrigger();
 ```
 
