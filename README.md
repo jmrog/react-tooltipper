@@ -83,9 +83,9 @@ this.tooltipperTrigger();
 ```
 
 ```javascript
-	componentDidMount: function () {
-		this.tooltipperSetTooltipData([{...}])]
-	}
+componentDidMount: function () {
+    this.tooltipperSetTooltipData([{...}])]
+}
 ```
 
 ## API
