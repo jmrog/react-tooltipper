@@ -22,10 +22,8 @@
     "tour"
   ],
   "dependencies": {
+    "react": "^0.13",
     "scroll": "0.0.3"
-  },
-  "peerDependencies": {
-    "react": "^0.13"
   },
   "devDependencies": {
     "del": "^2.0",
