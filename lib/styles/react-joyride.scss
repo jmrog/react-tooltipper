@@ -1,0 +1,323 @@
+$tooltipper-color: #f04 !default;
+$tooltipper-zindex: 1500 !default;
+$tooltipper-overlay-color: rgba(#000, 0.5) !default;
+
+$tooltipper-beacon-color: $tooltipper-color !default;
+$tooltipper-beacon-size: 36px !default;
+
+$tooltipper-hole-border-radius: 4px !default;
+$tooltipper-hole-shadow: 0 0 15px rgba(#000, 0.5) !default;
+
+$tooltipper-tooltip-arrow-size: 36px !default;
+$tooltipper-tooltip-bg-color: #fff !default;
+$tooltipper-tooltip-border-radius: 8px !default;
+$tooltipper-tooltip-color: #555 !default;
+$tooltipper-tooltip-font-size: 16px !default;
+$tooltipper-tooltip-padding: 20px !default;
+$tooltipper-tooltip-shadow: drop-shadow(2px 4px 4px rgba(#000, 0.3)) !default;
+$tooltipper-tooltip-width: (290px, 360px, 450px) !default;
+
+$tooltipper-header-color: $tooltipper-tooltip-color !default;
+$tooltipper-header-font-size: 20px !default;
+$tooltipper-header-border-color: $tooltipper-color !default;
+$tooltipper-header-border-width: 1px !default;
+
+$tooltipper-button-bg-color: $tooltipper-color !default;
+$tooltipper-button-color: #fff !default;
+$tooltipper-button-radius: 4px !default;
+
+$tooltipper-back-button-color: $tooltipper-color !default;
+
+$tooltipper-skip-button-color: #ccc !default;
+
+$tooltipper-tooltip-arrow-height: $tooltipper-tooltip-arrow-size / 2;
+$tooltipper-tooltip-arrow-scale: ($tooltipper-tooltip-arrow-size / ($tooltipper-tooltip-arrow-size * 0 + 1)) / 16;
+
+@function tooltipper-arrow($location: top) {
+  $height: $tooltipper-tooltip-arrow-height;
+  $width: $tooltipper-tooltip-arrow-size;
+  $rotate: '0';
+
+  @if $location == bottom {
+    $rotate: '180 8 4';
+  } @else if $location == left {
+    $height: $tooltipper-tooltip-arrow-size;
+    $width: $tooltipper-tooltip-arrow-height;
+    $rotate: '270 8 8';
+  } @else if $location == right {
+    $height: $tooltipper-tooltip-arrow-size;
+    $width: $tooltipper-tooltip-arrow-height;
+    $rotate: '90 4 4';
+  }
+
+  @return "data:image/svg+xml,%3Csvg%20width%3D%22#{$width}%22%20height%3D%22#{$height}%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpolygon%20points%3D%220%2C%200%208%2C%208%2016%2C0%22%20fill%3D%22#{$tooltipper-tooltip-bg-color}%22%20transform%3D%22scale%28#{$tooltipper-tooltip-arrow-scale}%29%20rotate%28#{$rotate}%29%22%3E%3C%2Fpolygon%3E%3C%2Fsvg%3E";
+}
+
+.tooltipper {
+
+  &-beacon {
+    display: inline-block;
+    height: $tooltipper-beacon-size;
+    position: relative;
+    width: $tooltipper-beacon-size;
+    z-index: $tooltipper-zindex;
+
+    .inner {
+      animation: tooltipper-beacon-inner 1.2s infinite ease-in-out;
+      background-color: $tooltipper-beacon-color;
+      border-radius: 50%;
+      display: block;
+      height: 50%;
+      left: 50%;
+      opacity: 0.7;
+      position: relative;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+    }
+
+    .outer {
+      animation: tooltipper-beacon-outer 1.2s infinite ease-in-out;
+      background-color: rgba($tooltipper-beacon-color, 0.2);
+      border: ($tooltipper-beacon-size / 18) solid $tooltipper-beacon-color;
+      border-radius: 50%;
+      display: block;
+      height: 100%;
+      left: 0;
+      opacity: 0.9;
+      position: absolute;
+      top: 0;
+      transform: translateY(-50%);
+      transform-origin: center;
+      width: 100%;
+    }
+  }
+
+  &-overlay {
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: $tooltipper-zindex;
+  }
+
+  &-hole {
+    border-radius: $tooltipper-hole-border-radius;
+    box-shadow: 0 0 0 9999px $tooltipper-overlay-color, $tooltipper-hole-shadow;
+    position: absolute;
+
+    &.safari {
+      box-shadow: 0 0 999px 9999px $tooltipper-overlay-color, $tooltipper-hole-shadow;
+    }
+  }
+
+  &-tooltip {
+    background-color: $tooltipper-tooltip-bg-color;
+    border-radius: $tooltipper-tooltip-border-radius;
+    color: $tooltipper-tooltip-color;
+    cursor: default;
+    filter: $tooltipper-tooltip-shadow;
+    opacity: 0;
+    padding: $tooltipper-tooltip-padding;
+    transform: translate3d(0, 0, 0);
+    width: nth($tooltipper-tooltip-width, 1);
+    z-index: $tooltipper-zindex + 10;
+
+    @media screen and (min-width: 480px) {
+      width: nth($tooltipper-tooltip-width, 2);
+    }
+
+    @media screen and (min-width: 960px) {
+      width: nth($tooltipper-tooltip-width, 3);
+    }
+
+    &.animate {
+      animation: tooltipper-tooltip 0.4s forwards;
+      animation-timing-function: cubic-bezier(0, 1.05, 0.55, 1.18);
+    }
+
+    header {
+      border-bottom: $tooltipper-header-border-width solid $tooltipper-header-border-color;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      position: relative;
+
+      h4 {
+        color: $tooltipper-header-color;
+        font-size: $tooltipper-header-font-size;
+        margin: 0;
+      }
+
+      a {
+        color: $tooltipper-tooltip-color;
+        font-size: 2.5rem;
+        line-height: 0.7;
+        position: absolute;
+        right: 0;
+        text-decoration: none;
+        top: 0;
+      }
+    }
+
+    main {
+      font-size: $tooltipper-tooltip-font-size;
+      margin-bottom: 18px;
+    }
+
+    footer {
+      text-align: right;
+
+      .primary {
+        background-color: $tooltipper-button-bg-color;
+        border-radius: $tooltipper-button-radius;
+        color: $tooltipper-button-color;
+        padding: 6px 12px;
+        text-decoration: none;
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+          background-color: lighten($tooltipper-button-bg-color, 6);
+        }
+      }
+
+      .secondary {
+        color: $tooltipper-back-button-color;
+        margin-right: 10px;
+      }
+
+      .skip {
+        color: $tooltipper-skip-button-color;
+        float: left;
+        margin-right: 10px;
+      }
+    }
+
+    .triangle {
+      background-repeat: no-repeat;
+      overflow: hidden;
+      position: absolute;
+    }
+
+    &.bottom,
+    &.bottom-left,
+    &.bottom-right {
+      margin-top: $tooltipper-tooltip-arrow-height;
+
+      .triangle {
+        background-image: url(tooltipper-arrow(bottom));
+        height: $tooltipper-tooltip-arrow-height;
+        left: 50%;
+        top: -($tooltipper-tooltip-arrow-height - 2);
+        width: $tooltipper-tooltip-arrow-size;
+      }
+    }
+
+    &.top,
+    &.top-left,
+    &.top-right {
+      margin-bottom: $tooltipper-tooltip-arrow-height;
+
+      .triangle {
+        background-image: url(tooltipper-arrow(top));
+        bottom: -($tooltipper-tooltip-arrow-height - 2);
+        height: $tooltipper-tooltip-arrow-height;
+        left: 50%;
+        width: $tooltipper-tooltip-arrow-size;
+      }
+    }
+
+    &.bottom,
+    &.top {
+      .triangle {
+        transform: translateX(-50%);
+      }
+    }
+
+    &.bottom-left,
+    &.top-left {
+      .triangle {
+        left: 3%;
+
+        @media screen and (min-width: 480px) {
+          left: 2%;
+        }
+      }
+    }
+
+    &.bottom-right,
+    &.top-right {
+      .triangle {
+        left: 86%;
+
+        @media screen and (min-width: 480px) {
+          left: 88%;
+        }
+
+        @media screen and (min-width: 768px) {
+          left: 90%;
+        }
+      }
+    }
+
+    &.left {
+      margin-right: $tooltipper-tooltip-arrow-height;
+
+      .triangle {
+        background-image: url(tooltipper-arrow(left));
+        height: $tooltipper-tooltip-arrow-size;
+        right: -($tooltipper-tooltip-arrow-height - 2);
+        width: $tooltipper-tooltip-arrow-height;
+      }
+    }
+
+    &.right {
+      margin-left: $tooltipper-tooltip-arrow-height;
+
+      .triangle {
+        background-image: url(tooltipper-arrow(right));
+        height: $tooltipper-tooltip-arrow-size;
+        left: -($tooltipper-tooltip-arrow-height - 2);
+        width: $tooltipper-tooltip-arrow-height;
+      }
+    }
+  }
+}
+
+@keyframes tooltipper-tooltip {
+  0% {
+    transform: scale(0.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: perspective(1px) scale(1);
+  }
+}
+
+@keyframes tooltipper-beacon-inner {
+  20% {
+    opacity: 0.9;
+  }
+
+  90% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes tooltipper-beacon-outer {
+  0% {
+    transform: scale(1);
+  }
+
+  45% {
+    opacity: 0.7;
+    transform: scale(0.75);
+  }
+
+  100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
