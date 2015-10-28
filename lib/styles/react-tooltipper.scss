@@ -33,7 +33,7 @@ $tooltipper-tooltip-arrow-scale: ($tooltipper-tooltip-arrow-size / ($tooltipper-
   $arrow-color: '%23' + str-slice(#{$tooltipper-color}, 2);
 
   @if $location == top {
-    $arrow-color: $tooltipper-tooltip-bg-color;
+    $arrow-color: '%23' + str-slice(#{$tooltipper-tooltip-bg-color}, 2);
   }@else if $location == bottom {
     $rotate: '180 8 4';
   } @else if $location == left {
