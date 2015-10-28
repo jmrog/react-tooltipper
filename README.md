@@ -98,6 +98,9 @@ Change the initial options during `componentWillMount`. All optional.
 
 - `options` {object} - One or more of the options below.
 
+**closeOnAnyClick** {boolean}: If true, close tooltips if the user clicks *anywhere*. If false, close
+    tooltips only when the user clicks on the 'x' for the tooltip. Defaults to `false`.
+
 **completeCallback** {function}: It will be called after a closes the tooltip. Defaults to `undefined`
 
 **doDebounceResize** {boolean}: Do or do not debounce the resize event listenre. Defaults to `true`
@@ -133,6 +136,13 @@ this.tooltipperSetTooltipData([
 Call this method to trigger the tooltip defined with `this.tooltipperSetTooltipData`.
 
 - `autorun` {boolean} - Optional; displays the tooltip in an already opened state (no beacon to click)
+
+### this.tooltipperForceCalcPlacement()
+
+Call this method to force a tooltip or beacon to recalculate its positioning. Typically, this happens
+automatically, so you should only really need to call this method if (for example) an element is added
+to or removed from the DOM and this should have an effect on the beacon's/tooltip's placement.
+
 
 ## tooltipData Syntax
 There are 4 usable options but you can pass extra parameters.
