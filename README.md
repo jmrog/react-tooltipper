@@ -9,13 +9,20 @@ React Tooltipper
 View the demo <a href="http://jmrog.github.io/react-tooltipper/" target="_blank">here</a>.
 -->
 
-**NOTE:** This is a fork of the react-joyride project created mostly for utilitarian reasons, and it is
-in the very early stages of development. Things may break.
+**NOTE:** This is a fork of the very nice [react-joyride](https://github.com/gilbarbara/react-joyride)
+project, created mostly for utilitarian reasons, and it is in the very early stages of development.
+Things may break.
 
-Create and trigger responsive beacons and tooltips for your ReactJS apps using this React mixin. It can
-be used to show either clickable beacons that will open tooltips or simply the open tooltips themselves.
-All beacons and tooltips are dynamically positioned so as to appear attached to their target elements,
-and will reposition themselves on resizing, etc.
+Use this React mixin to create and trigger responsive beacons and tooltips for your ReactJS apps. It can
+be used to show either clickable beacons that will open tooltips or simply to show the open tooltips
+themselves. The beacons and tooltips are dynamically positioned so as to appear attached to their target
+elements, and will reposition themselves on resizing (or can be forced to reposition themselves in
+response to certain events). The main purpose of the mixin is to facilitate the management of discrete,
+good-looking, easy-to-use tooltips and beacons in a React application, where those tooltips/beacons may
+or may not be necessarily connected, and may or may not be triggered in response to disconnected events.
+If the tooltips and beacons *will* be necessarily connected (i.e., triggered one after another), then
+[react-joyride](https://github.com/gilbarbara/react-joyride) will probably better serve your needs.
+
 
 ## Install
 
