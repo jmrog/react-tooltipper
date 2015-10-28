@@ -20,7 +20,8 @@ elements, and will reposition themselves on resizing (or can be forced to reposi
 response to certain events). The main purpose of the mixin is to facilitate the management of discrete,
 good-looking, easy-to-use tooltips and beacons in a React application, where those tooltips/beacons may
 or may not be necessarily connected, and may or may not be triggered in response to disconnected events.
-If the tooltips and beacons *will* be necessarily connected (i.e., triggered one after another), then
+A side-benefit is fewer state changes than might be involved in a joyride. On the other hand, if your
+tooltips and beacons *will* be necessarily connected (i.e., triggered one after another), then
 [react-joyride](https://github.com/gilbarbara/react-joyride) will probably better serve your needs.
 
 
