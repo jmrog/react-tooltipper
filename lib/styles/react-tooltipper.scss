@@ -179,6 +179,11 @@ $tooltipper-subtle-border: 1px solid #ddd;
       font-size: $tooltipper-tooltip-font-size;
       line-height: 1.3;
       padding: 12px 15px 18px 15px;
+
+      .tooltipper-paragraph {
+        margin: 0;
+        padding: $tooltipper-tooltip-font-size 0 0 0;
+      }
     }
 
     .triangle {
