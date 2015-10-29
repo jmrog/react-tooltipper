@@ -1,6 +1,6 @@
 {
   "name": "react-tooltipper",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "Create and trigger responsive tooltips for your ReactJS apps",
   "author": "Jason Rogers <jason@jmichaelrogers.com>",
   "repository": {
