@@ -33,16 +33,16 @@ npm install --save react-tooltipper
 
 
 ```javascript
-var react = require('react/addons');
+var react = require('react');
 var tooltipper = require('react-tooltipper').Mixin;
 
 var App = React.createClass({
-  mixins: [React.addons.PureRenderMixin, tooltipper],
+  mixins: [tooltipper],
   ...
 });
 ```
 
-**This mixin can change state often, so you might want to use `React.addons.PureRenderMixin` in your
+**This mixin can change state often, so you might want to use `react-addons-pure-render-mixin` in your
 components as well.**
 
 #### Styles
