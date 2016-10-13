@@ -29,7 +29,8 @@ gulp.task('styles', function () {
 });
 
 gulp.task('clean', function (cb) {
-    del(['lib/styles/*.css'], cb);
+    del(['lib/styles/*.css']);
+    cb();
 });
 
 gulp.task('build', function (cb) {
