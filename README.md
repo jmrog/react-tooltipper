@@ -109,7 +109,7 @@ Change the initial options during `componentWillMount`. All optional.
 **closeOnAnyClick** {boolean}: If true, close tooltips if the user clicks *anywhere*. If false, close
     tooltips only when the user clicks on the 'x' for the tooltip. Defaults to `false`.
 
-**completeCallback** {function}: It will be called after a closes the tooltip. Defaults to `undefined`
+**completeCallback** {function}: It will be called after a user closes the tooltip. Defaults to `undefined`
 
 **doDebounceResize** {boolean}: Do or do not debounce the resize event listenre. Defaults to `true`
 
