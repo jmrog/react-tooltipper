@@ -9,7 +9,7 @@ React Tooltipper
 View the demo <a href="http://jmrog.github.io/react-tooltipper/" target="_blank">here</a>.
 -->
 
-#DEPRECATION NOTICE:
+# DEPRECATION NOTICE:
 
 **Hey!** This project was forked from [react-joyride](https://github.com/gilbarbara/react-joyride) way back in 2015, and it hasn't been updated much since. It was forked for a temporary, mostly internal reason that I barely remember at this point. You probably shouldn't use it. For joyrides, you should probably just use react-joyride itself. For one-off tooltips, you should probably just create your own React components. Using this package for that purpose is almost definitely overkill.
 
